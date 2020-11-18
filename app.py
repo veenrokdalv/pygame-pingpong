@@ -33,4 +33,20 @@ class App:
     # Инициализация шарика
     self._BALL = ball.Ball()
   
+  def run(self):
+    """Запуск основного цикла программы"""
+    while True:
+      self.check_events()
   
+  def quit(self):
+    """Завершение программы"""
+    print('Правильное завершение программы')
+    pg.quit()
+    quit()
+    sys.exit()
+
+  def check_events(self):
+    """Отлавливание всех событий программы"""
+    
+    # Выход из программы путем нажатия крестика
+    [self.quit() for event in pg.event.get() if event.type == pg.QUIT]
