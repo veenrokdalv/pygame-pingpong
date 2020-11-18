@@ -10,5 +10,27 @@ class App:
   Класс приложения.
   Управляет всеми процессами приложения.
   """
-  pass
+  def __init__(self):
+    """Инициализация главных настроек приложения"""
 
+    # Настройки окна.
+    self.WIDTH = 600
+    self.HEIGHT = 900
+    self.TITLE = "Ping Pong"
+    self.ICON = pg.image.load('images/icon_app.png')
+    self.WINDOW = pg.display.set_mode((self.WIDTH, self.HEIGHT))
+    pg.display.set_caption(self.TITLE)
+    pg.display.set_icon(self.ICON)
+
+    # Настройки производительности
+    self._CLOCK = pg.time.Clock()
+    self._fps = 30
+
+    # Инициализация платформ
+    self._PLATFORM_TOP = platform.Platform()
+    self._PLATFORM_BOTTOM = platform.Platform()
+
+    # Инициализация шарика
+    self._BALL = ball.Ball()
+  
+  
