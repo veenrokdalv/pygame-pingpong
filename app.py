@@ -28,7 +28,7 @@ class App:
 
         # Инициализация платформ
         self._PLATFORM_TOP = platform.Platform(self.WINDOW, 0)
-        self._PLATFORM_BOTTOM = platform.Platform(self.WINDOW, self.HEIGHT - 100)
+        self._PLATFORM_BOTTOM = platform.Platform(self.WINDOW, self.HEIGHT - 80)
 
         # Инициализация шарика
         self._BALL = ball.Ball()
@@ -75,5 +75,9 @@ class App:
         """Отрисовывает и отображает все объекты программы"""
         # Отрисовка фона
         self.WINDOW.fill(self._color)
+
+        # Отрисовка поверхностей
+        self._PLATFORM_TOP.draw()
+        self._PLATFORM_BOTTOM.draw()
 
         pg.display.update()
