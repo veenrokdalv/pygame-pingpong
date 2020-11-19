@@ -18,7 +18,7 @@ class App:
         self.TITLE = "Ping Pong"
         self.ICON = pg.image.load('images/icon_app.png')
         self.WINDOW = pg.display.set_mode((self.WIDTH, self.HEIGHT))
-        self._color = (20, 20 , 20)
+        self._color = (20, 20, 20)
         pg.display.set_caption(self.TITLE)
         pg.display.set_icon(self.ICON)
 
@@ -56,23 +56,24 @@ class App:
         keys = pg.key.get_pressed()
 
         # Завершение программы нажатием ESCAPE
-        if [pg.K_ESCAPE]:
-          self.quit()
+        if keys[pg.K_ESCAPE]:
+            self.quit()
 
         # Обработка клавиш управления self._PLATFORM_TOP
         if keys[pg.K_a]:
-          pass
+            print(1)
         if keys[pg.K_d]:
-          pass
+            pass
 
         # Обработка клавиш управления self._PLATFORM_BOTTOM
         if keys[pg.K_RIGHT]:
-          pass
+            pass
         if keys[pg.K_LEFT]:
-          pass
-    def draw(self):
-      """Отрисовывает и отображает все объекты программы"""
-      # Отрисовка фона
-      self.WINDOW.fill(self._color)
+            pass
 
-      pg.display.update()
+    def draw(self):
+        """Отрисовывает и отображает все объекты программы"""
+        # Отрисовка фона
+        self.WINDOW.fill(self._color)
+
+        pg.display.update()
