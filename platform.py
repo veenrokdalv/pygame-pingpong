@@ -21,7 +21,7 @@ class Platform:
         self.color = (102, 51, 0)
         self.rect = (self.pos_x, self.pos_y, self.WIDTH, self.HEIGHT)
         self.speed = 20
-        
+
         # Колличество очков
         self.score = 0
 
@@ -36,11 +36,11 @@ class Platform:
         pg.draw.rect(self.WINDOW, self.color, self.rect)
     
     def move_left(self):
-      """Изменяет координаты self.pos_x на self.pos_x - self.speed"""
+      """Передвигает платформу в лево"""
 
       self.pos_x - self.speed
     
     def move_right(self):
-      """Изменяет координаты self.pos_x на self.pos_x + self.speed"""
+      """Передвигает платформу в право"""
 
-      self.pos_x - self.speed
+      self.pos_x + self.speed
