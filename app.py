@@ -39,7 +39,7 @@ class App:
         while True:
             self.check_events()
             self.draw()
-            self._CLOCK(self._fps)
+            self._CLOCK.tick(self._fps)
 
     def quit(self):
         """Завершение программы"""
