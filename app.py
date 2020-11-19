@@ -47,7 +47,6 @@ class App:
         print('Правильное завершение программы')
         pg.quit()
         quit()
-        sys.exit()
 
     def check_events(self):
         """Отлавливание всех событий программы"""
@@ -55,10 +54,27 @@ class App:
         # Выход из программы путем нажатия крестика
         [self.quit() for event in pg.event.get() if event.type == pg.QUIT]
 
+        # Все события с клавиатуры
+        keys = pg.key.get_pressed()
+
+        # Завершение программы нажатием ESCAPE
+        if [pg.K_ESCAPE]:
+          self.quit()
+
+        # Обработка клавиш управления self._PLATFORM_TOP
+        if keys[pg.K_a]:
+          pass
+        if keys[pg.K_d]:
+          pass
+
+        # Обработка клавиш управления self._PLATFORM_BOTTOM
+        if keys[pg.K_RIGHT]:
+          pass
+        if keys[pg.K_LEFT]:
+          pass
     def draw(self):
       """Отрисовывает и отображает все объекты программы"""
       # Отрисовка фона
       self.WINDOW.fill(self._color)
 
-      
       pg.display.update()
