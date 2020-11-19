@@ -19,12 +19,10 @@ class Platform:
         self.pos_x = pg.display.get_window_size()[0] // 2 - self.WIDTH // 2
         self.pos_y = start_pos_y + 50 - self.HEIGHT
         self.color = (102, 51, 0)
-        self.rect = (self.pos_x, self.pos_y, self.WIDTH, self.HEIGHT)
         self.speed = 20
 
         # Колличество очков
         self.score = 0
-
 
     def draw(self):
         """
@@ -33,14 +31,14 @@ class Platform:
         с цветом self.color,
         и размерами self.WIDTH, self.HEIGH
         """
-        pg.draw.rect(self.WINDOW, self.color, self.rect)
-    
+        pg.draw.rect(self.WINDOW, self.color, (self.pos_x, self.pos_y, self.WIDTH, self.HEIGHT))
+
+
     def move_left(self):
-      """Передвигает платформу в лево"""
+        """Передвигает платформу в лево"""
+        self.pos_x -= self.speed
 
-      self.pos_x - self.speed
-    
+
     def move_right(self):
-      """Передвигает платформу в право"""
-
-      self.pos_x + self.speed
+        """Передвигает платформу в право"""
+        self.pos_x += self.speed
