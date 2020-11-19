@@ -20,6 +20,7 @@ class App:
         self.TITLE = "Ping Pong"
         self.ICON = pg.image.load('images/icon_app.png')
         self.WINDOW = pg.display.set_mode((self.WIDTH, self.HEIGHT))
+        self._color = (20, 20 , 20)
         pg.display.set_caption(self.TITLE)
         pg.display.set_icon(self.ICON)
 
@@ -56,5 +57,8 @@ class App:
 
     def draw(self):
       """Отрисовывает и отображает все объекты программы"""
+      # Отрисовка фона
+      self.WINDOW.fill(self._color)
 
+      
       pg.display.update()
