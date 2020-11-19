@@ -18,7 +18,7 @@ class App:
         self.TITLE = "Ping Pong"
         self.ICON = pg.image.load('images/icon_app.png')
         self.WINDOW = pg.display.set_mode((self.WIDTH, self.HEIGHT))
-        self._color = (20, 20, 20)
+        self._color = (0, 102, 51)
         pg.display.set_caption(self.TITLE)
         pg.display.set_icon(self.ICON)
 
@@ -27,8 +27,8 @@ class App:
         self._fps = 30
 
         # Инициализация платформ
-        self._PLATFORM_TOP = platform.Platform()
-        self._PLATFORM_BOTTOM = platform.Platform()
+        self._PLATFORM_TOP = platform.Platform(self.WINDOW, 0)
+        self._PLATFORM_BOTTOM = platform.Platform(self.WINDOW, self.HEIGHT - 100)
 
         # Инициализация шарика
         self._BALL = ball.Ball()
@@ -61,7 +61,7 @@ class App:
 
         # Обработка клавиш управления self._PLATFORM_TOP
         if keys[pg.K_a]:
-            print(1)
+            pass
         if keys[pg.K_d]:
             pass
 
