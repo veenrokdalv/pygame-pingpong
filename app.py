@@ -61,15 +61,15 @@ class App:
 
         # Обработка клавиш управления self._PLATFORM_TOP
         if keys[pg.K_a]:
-            pass
+            self._PLATFORM_TOP.move_left()
         if keys[pg.K_d]:
-            pass
+            self._PLATFORM_TOP.move_right()
 
         # Обработка клавиш управления self._PLATFORM_BOTTOM
-        if keys[pg.K_RIGHT]:
-            pass
         if keys[pg.K_LEFT]:
-            pass
+            self._PLATFORM_BOTTOM.move_left()
+        if keys[pg.K_RIGHT]:
+            self._PLATFORM_BOTTOM.move_right()
 
     def draw(self):
         """Отрисовывает и отображает все объекты программы"""
