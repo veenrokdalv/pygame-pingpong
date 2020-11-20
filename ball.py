@@ -1,13 +1,18 @@
 import random
 import pygame as pg
+
+
 class Ball:
     """
     Класс шарика.
     Описан весь функционал шарика.
     """
 
-    def __init__(self):
+    def __init__(self, WINDOW):
         """Инициализация главных настроек мячика."""
+
+        # Окно
+        self.WINDOW = WINDOW
 
         # Начальное положение
         self.pos_x = pg.display.get_window_size()[0] // 2
@@ -22,3 +27,6 @@ class Ball:
         self.speed = 5
         self.color = (255, 0, 51)
 
+    def draw(self):
+        """Отрисовывает мячик в координатах self.pos_x, self.pos_y, цветом self.color, радиусом self.radius"""
+        pg.draw.circle(self.WINDOW, self.color, (self.pos_x, self.pos_y), self.RADIUS)
