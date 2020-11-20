@@ -24,7 +24,7 @@ class App:
 
         # Настройки производительности
         self._CLOCK = pg.time.Clock()
-        self._fps = 60 
+        self._fps = 75 
 
         # Инициализация платформ
         self._PLATFORM_TOP = platform.Platform(self.WINDOW, 0)
