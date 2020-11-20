@@ -14,7 +14,7 @@ class App:
 
         # Настройки окна.
         self.WIDTH = 600
-        self.HEIGHT = 900
+        self.HEIGHT = 800
         self.TITLE = "Ping Pong"
         self.ICON = pg.image.load('images/icon_app.png')
         self.WINDOW = pg.display.set_mode((self.WIDTH, self.HEIGHT))
@@ -24,7 +24,7 @@ class App:
 
         # Настройки производительности
         self._CLOCK = pg.time.Clock()
-        self._fps = 30
+        self._fps = 60 
 
         # Инициализация платформ
         self._PLATFORM_TOP = platform.Platform(self.WINDOW, 0)
