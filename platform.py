@@ -14,12 +14,12 @@ class Platform:
         self.WINDOW = WINDOW
 
         # Параметры поверхности
-        self.WIDTH = 130
+        self.WIDTH = 150
         self.HEIGHT = 20
         self.pos_x = pg.display.get_window_size()[0] // 2 - self.WIDTH // 2
         self.pos_y = start_pos_y + 50 - self.HEIGHT
         self.color = (102, 51, 0)
-        self.speed = 20
+        self.speed = 10
 
         # Колличество очков
         self.score = 0
@@ -31,14 +31,23 @@ class Platform:
         с цветом self.color,
         и размерами self.WIDTH, self.HEIGH
         """
-        pg.draw.rect(self.WINDOW, self.color, (self.pos_x, self.pos_y, self.WIDTH, self.HEIGHT))
+        pg.draw.rect(self.WINDOW, self.color, (self.pos_x,
+                                               self.pos_y, self.WIDTH, self.HEIGHT))
 
+    @property
+    def collision_wall(self) -> bool:
+        """
+        Прозводится расчет, пересечет ли платформа следующим шагом стенку.
+        :return : True - если пересечет, иначе False
+        """
+        return (self.pos_x - self.speed < 0), (self.pos_x + self.speed + self.WIDTH > pg.display.get_window_size()[0])
 
     def move_left(self):
         """Передвигает платформу в лево"""
-        self.pos_x -= self.speed
-
+        if not self.collision_wall[0]:
+            self.pos_x -= self.speed
 
     def move_right(self):
         """Передвигает платформу в право"""
-        self.pos_x += self.speed
+        if not self.collision_wall[1]:
+            self.pos_x += self.speed
