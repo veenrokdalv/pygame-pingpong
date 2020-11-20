@@ -24,11 +24,12 @@ class App:
 
         # Настройки производительности
         self._CLOCK = pg.time.Clock()
-        self._fps = 75 
+        self._fps = 75
 
         # Инициализация платформ
         self._PLATFORM_TOP = platform.Platform(self.WINDOW, 0)
-        self._PLATFORM_BOTTOM = platform.Platform(self.WINDOW, self.HEIGHT - 80)
+        self._PLATFORM_BOTTOM = platform.Platform(
+            self.WINDOW, self.HEIGHT - 80)
 
         # Инициализация шарика
         self._BALL = ball.Ball()
