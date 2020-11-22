@@ -14,7 +14,7 @@ class App:
 
         # Настройки окна.
         self.WIDTH = 600
-        self.HEIGHT = 800
+        self.HEIGHT = 900
         self.TITLE = "Ping Pong"
         self.ICON = pg.image.load('images/icon_app.png')
         self.WINDOW = pg.display.set_mode((self.WIDTH, self.HEIGHT))
