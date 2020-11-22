@@ -19,7 +19,7 @@ class Platform:
         self.pos_x = pg.display.get_window_size()[0] // 2 - self.WIDTH // 2
         self.pos_y = start_pos_y + 50 - self.HEIGHT
         self.color = (102, 51, 0)
-        self.speed = 10
+        self.speed = 5
 
         # Колличество очков
         self.score = 0
