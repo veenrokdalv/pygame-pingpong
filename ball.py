@@ -8,11 +8,15 @@ class Ball:
     Описан весь функционал шарика.
     """
 
-    def __init__(self, WINDOW):
+    def __init__(self, WINDOW, PLATFORM_TOP, PLATFORM_BOTTOM):
         """Инициализация главных настроек мячика."""
 
         # Окно
         self.WINDOW = WINDOW
+
+        # Платформы
+        self.PLATFORM_TOP = PLATFORM_TOP
+        self.PLATFORM_BOTTOM = PLATFORM_BOTTOM
 
         # Начальное положение
         self.pos_x = pg.display.get_window_size()[0] // 2
@@ -23,10 +27,25 @@ class Ball:
         self.speed_y = random.choice([-6, -8, -10, 6, 8, 10])
 
         # Характеристики
-        self.RADIUS = 25
-        self.speed = 5
+        self.RADIUS = 20
         self.color = (255, 0, 51)
+
+
 
     def draw(self):
         """Отрисовывает мячик в координатах self.pos_x, self.pos_y, цветом self.color, радиусом self.radius"""
-        pg.draw.circle(self.WINDOW, self.color, (self.pos_x, self.pos_y), self.RADIUS)
+        pg.draw.circle(self.WINDOW, self.color,
+                       (self.pos_x, self.pos_y), self.RADIUS)
+
+    def move(self):
+        """Изменяет координаты self.pos_x, self.pos_y"""
+        self.collision_wall()
+        self.pos_x += self.speed_x
+        self.pos_y += self.speed_y
+
+    def collision_wall(self):
+        """Проверяет на столкновение с границами экрана"""
+        if self.pos_x - self.RADIUS < 0 or self.pos_x + self.RADIUS + self.speed_x > pg.display.get_window_size()[0]:
+            self.speed_x = -self.speed_x
+        elif self.pos_y - self.RADIUS < 0 or self.pos_y + self.RADIUS + self.speed_y > pg.display.get_window_size()[1]:
+            self.speed_y = -self.speed_y
