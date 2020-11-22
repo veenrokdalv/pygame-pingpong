@@ -27,17 +27,18 @@ class App:
         self._fps = 75
 
         # Инициализация платформ
-        self._PLATFORM_TOP = platform.Platform(self.WINDOW, 0)
-        self._PLATFORM_BOTTOM = platform.Platform(
+        self.PLATFORM_TOP = platform.Platform(self.WINDOW, 0)
+        self.PLATFORM_BOTTOM = platform.Platform(
             self.WINDOW, self.HEIGHT - 80)
 
-        # Инициализация шарика
-        self._BALL = ball.Ball()
+        # Инициализация мячика
+        self._BALL = ball.Ball(self.WINDOW, self.PLATFORM_TOP, self.PLATFORM_BOTTOM)
 
     def run(self):
         """Запуск основного цикла программы"""
         while True:
             self.check_events()
+            self.move()
             self.draw()
             self._CLOCK.tick(self._fps)
 
@@ -48,7 +49,7 @@ class App:
         quit()
 
     def check_events(self):
-        """Отлавливание всех событий программы"""
+        """Отслеживает все события программы"""
 
         # Выход из программы путем нажатия крестика
         [self.quit() for event in pg.event.get() if event.type == pg.QUIT]
@@ -60,25 +61,30 @@ class App:
         if keys[pg.K_ESCAPE]:
             self.quit()
 
-        # Обработка клавиш управления self._PLATFORM_TOP
+        # Обработка клавиш управления self.PLATFORM_TOP
         if keys[pg.K_a]:
-            self._PLATFORM_TOP.move_left()
+            self.PLATFORM_TOP.move_left()
         if keys[pg.K_d]:
-            self._PLATFORM_TOP.move_right()
+            self.PLATFORM_TOP.move_right()
 
-        # Обработка клавиш управления self._PLATFORM_BOTTOM
+        # Обработка клавиш управления self.PLATFORM_BOTTOM
         if keys[pg.K_LEFT]:
-            self._PLATFORM_BOTTOM.move_left()
+            self.PLATFORM_BOTTOM.move_left()
         if keys[pg.K_RIGHT]:
-            self._PLATFORM_BOTTOM.move_right()
+            self.PLATFORM_BOTTOM.move_right()
 
     def draw(self):
-        """Отрисовывает и отображает все объекты программы"""
+        """Отображает все объекты программы"""
         # Отрисовка фона
         self.WINDOW.fill(self._color)
 
         # Отрисовка поверхностей
-        self._PLATFORM_TOP.draw()
-        self._PLATFORM_BOTTOM.draw()
+        self.PLATFORM_TOP.draw()
+        self.PLATFORM_BOTTOM.draw()
+        self._BALL.draw()
 
         pg.display.update()
+    
+    def move(self):
+        """Передвигает объеты приложения"""
+        self._BALL.move()
