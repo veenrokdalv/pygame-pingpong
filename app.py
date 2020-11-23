@@ -37,22 +37,38 @@ class App:
     def run(self):
         """Запуск основного цикла программы"""
         while True:
-            self.check_events()
-            self.move()
-            self.draw()
+            self._restart()
+            self._check_events()
+            self._move()
+            self._draw()
             self._CLOCK.tick(self._fps)
 
-    def quit(self):
+    def _quit(self):
         """Завершение программы"""
         print('Правильное завершение программы')
         pg.quit()
         quit()
+    
+    def _restart(self):
+        if self._BALL.goal() == 'top':
+            print('top')
+            self._BALL.restart()
+            self.PLATFORM_BOTTOM.score += 1
+            self.PLATFORM_BOTTOM.restart()
+            self.PLATFORM_TOP.restart()
+        elif self._BALL.goal() == 'bottom':
+            print('bottom')
+            self._BALL.restart()
+            self.PLATFORM_TOP.score += 1
+            self.PLATFORM_BOTTOM.restart()
+            self.PLATFORM_TOP.restart()
 
-    def check_events(self):
+
+    def _check_events(self):
         """Отслеживает все события программы"""
 
         # Выход из программы путем нажатия крестика
-        [self.quit() for event in pg.event.get() if event.type == pg.QUIT]
+        [self._quit() for event in pg.event.get() if event.type == pg.QUIT]
 
         # Все события с клавиатуры
         keys = pg.key.get_pressed()
@@ -73,7 +89,7 @@ class App:
         if keys[pg.K_RIGHT]:
             self.PLATFORM_BOTTOM.move_right()
 
-    def draw(self):
+    def _draw(self):
         """Отображает все объекты программы"""
         # Отрисовка фона
         self.WINDOW.fill(self._color)
@@ -85,6 +101,6 @@ class App:
 
         pg.display.update()
     
-    def move(self):
+    def _move(self):
         """Передвигает объеты приложения"""
         self._BALL.move()
