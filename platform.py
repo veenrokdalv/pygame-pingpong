@@ -14,6 +14,7 @@ class Platform:
         self.WINDOW = WINDOW
 
         # Параметры поверхности
+        self.start_pos_y = start_pos_y
         self.WIDTH = 150
         self.HEIGHT = 20
         self.pos_x = pg.display.get_window_size()[0] // 2 - self.WIDTH // 2
@@ -51,3 +52,9 @@ class Platform:
         """Передвигает платформу в право"""
         if not self.collision_wall[1]:
             self.pos_x += self.speed
+
+    def restart(self):
+        """Меняет координаты на начальные
+        """
+        self.pos_x = pg.display.get_window_size()[0] // 2 - self.WIDTH // 2
+        self.pos_y = self.start_pos_y + 50 - self.HEIGHT
